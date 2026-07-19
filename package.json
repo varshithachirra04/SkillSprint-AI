@@ -1,0 +1,19 @@
+{
+  "name": "skillsprint-ai-service",
+  "version": "1.0.0",
+  "description": "AI integration layer for SkillSprint AI - timetable generation, daily goals, motivational tips, and study chatbot",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8",
+    "openai": "^4.55.0",
+    "cors": "^2.8.5"
+  }
+}
