@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: skillsprint-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: AI_PROVIDER
+        value: mock
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+      - key: AI_REQUEST_TIMEOUT_MS
+        value: 15000
+      - key: AI_MAX_RETRIES
+        value: 2
+      - key: AI_CIRCUIT_BREAKER_THRESHOLD
+        value: 4
+      - key: AI_CIRCUIT_BREAKER_COOLDOWN_MS
+        value: 60000
