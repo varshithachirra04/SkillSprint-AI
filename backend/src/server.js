@@ -60,11 +60,17 @@ app.use("/api", (req, res) => {
   res.status(404).json({ error: "Endpoint not found." });
 });
 
-const PORT = process.env.PORT || 4000;
+// Connect to DB always (handles serverless cold starts)
+connectDB().catch(err => console.error("DB connection error:", err));
 
-connectDB().then(() => {
+// For Vercel serverless — export the app
+module.exports = app;
+
+// For local development — listen on port
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 4000;
   app.listen(PORT, () => {
     console.log(`SkillSprint AI backend running on http://localhost:${PORT}`);
     console.log(`Using AI provider: ${process.env.AI_PROVIDER || "mock"}`);
   });
-});
+}
